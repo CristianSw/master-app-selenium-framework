@@ -1,23 +1,50 @@
 package selenium.framework.test_components;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import selenium.framework.resources.ExtentReporterNG;
 
-public class Listeners implements ITestListener {
+import java.io.IOException;
+
+public class Listeners extends BaseTest implements ITestListener {
+
+    ExtentReports extent = ExtentReporterNG.getReportObject();
+    ExtentTest test;
+    ThreadLocal<ExtentTest> extentTest = new ThreadLocal<>();
+
     @Override
     public void onTestStart(ITestResult result) {
-        ITestListener.super.onTestStart(result);
+        test = extent.createTest(result.getMethod().getMethodName());
+        extentTest.set(test);
     }
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ITestListener.super.onTestSuccess(result);
+        extentTest.get().log(Status.PASS, "Test Passed");
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        ITestListener.super.onTestFailure(result);
+        extentTest.get().log(Status.FAIL, result.getThrowable());
+        extentTest.get().fail(result.getThrowable());
+        //get driver from result
+        try {
+            driver = (WebDriver) result.getTestClass().getRealClass().getField("driver").get(result.getInstance());
+        } catch (IllegalAccessException | NoSuchFieldException e) {
+            throw new RuntimeException(e);
+        }
+//        screenshot
+        try {
+            String screenshotOfAllPage = getScreenshotOfAllPage(result.getMethod().getMethodName(), driver);
+            extentTest.get().addScreenCaptureFromPath(screenshotOfAllPage, result.getMethod().getMethodName());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
@@ -42,6 +69,6 @@ public class Listeners implements ITestListener {
 
     @Override
     public void onFinish(ITestContext context) {
-        ITestListener.super.onFinish(context);
+        extent.flush();
     }
 }
