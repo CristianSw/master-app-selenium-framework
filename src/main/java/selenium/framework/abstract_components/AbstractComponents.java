@@ -16,8 +16,9 @@ public class AbstractComponents {
 
     public AbstractComponents(WebDriver driver) {
         this.driver = driver;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     @FindBy(id = "navLoginField")
     WebElement usernameField;
 
@@ -27,63 +28,100 @@ public class AbstractComponents {
     @FindBy(id = "navLoginSubmit")
     WebElement loginBtn;
 
-    @FindBy(xpath = "//ul/li[@class='nav-item'][5]")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][5]/a")
     WebElement registerLink;
 
-    @FindBy(xpath = "//ul/li[@class='nav-item'][1]")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][1]/a")
     WebElement welcomeLink;
 
-    @FindBy(xpath = "//ul/li[@class='nav-item'][2]")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][2]/a")
     WebElement productsListLink;
 
-    @FindBy(xpath = "//ul/li[@class='nav-item'][3]")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][3]/a")
     WebElement cartLink;
 
-    @FindBy(xpath = "//ul/li[@class='nav-item'][4]")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][4]/a")
     WebElement ordersLink;
-    @FindBy(xpath = "//ul/li[@class='nav-item'][5]")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][5]/a")
     WebElement logoutBtn;
 
-    public void waitForElementToAppear(By locator){
+    public void waitForElementToAppear(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
-    public CartPage goToCartPage(){
+
+    public void waitForElementToAppear(WebElement webElement) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
+    }
+
+    public CartPage goToCartPage() {
         cartLink.click();
-        CartPage cartPage = new CartPage(driver);
-        return cartPage;
+        return new CartPage(driver);
     }
-    public WelcomePage goToWelcomePage(){
+
+    public WelcomePage goToWelcomePage() {
         welcomeLink.click();
-        WelcomePage welcomePage = new WelcomePage(driver);
-        return welcomePage;
+        return new WelcomePage(driver);
     }
 
-    public OrdersPage goToOrdersPage(){
+    public OrdersPage goToOrdersPage() {
         ordersLink.click();
-        OrdersPage ordersPage = new OrdersPage(driver);
-        return ordersPage;
+        return new OrdersPage(driver);
     }
-    public ProductListPage goToProductsPage(){
+
+    public ProductListPage goToProductsPage() {
         productsListLink.click();
-        ProductListPage productListPage = new ProductListPage(driver);
-        return productListPage;
+        return new ProductListPage(driver);
     }
 
-    public RegistrationPage goToRegistrationPage(){
+    public RegistrationPage goToRegistrationPage() {
         registerLink.click();
-        RegistrationPage registrationPage = new RegistrationPage(driver);
-        return registrationPage;
+        return new RegistrationPage(driver);
     }
 
-    public WelcomePage loginToApp(String username, String password){
+    public WelcomePage loginToApp(String username, String password) {
         usernameField.sendKeys(username);
         passwordField.sendKeys(password);
         loginBtn.click();
         return new WelcomePage(driver);
     }
-    public void logout(){
+
+    public void logout() {
         logoutBtn.click();
+    }
+
+    public void setLoginField(String username) {
+        usernameField.sendKeys(username);
+    }
+
+    public void setPasswordField(String password) {
+        passwordField.sendKeys(password);
+    }
+
+    public WebElement getUsernameField() {
+        return usernameField;
+    }
+
+    public WebElement getPasswordField() {
+        return passwordField;
+    }
+
+    public WebElement getLoginBtn() {
+        return loginBtn;
+    }
+
+    public WebElement getProductsLink() {
+        return productsListLink;
+    }
+    public WebElement getMarketLink() {
+        return welcomeLink;
+    }
+    public WebElement getCartLink() {
+        return cartLink;
+    }
+    public WebElement getRegisterLink() {
+        return registerLink;
     }
 
 }

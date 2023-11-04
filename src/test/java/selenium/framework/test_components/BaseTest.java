@@ -23,7 +23,7 @@ public class BaseTest {
     public WebDriver driver;
     public WelcomePage welcomePage;
 
-    public WebDriver initTest() throws IOException {
+    public WebDriver initTest() {
         Properties properties = new Properties();
         try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "//src//main//java//selenium//framework//resources//GlobalData.properties")) {
             properties.load(fis);
@@ -65,8 +65,8 @@ public class BaseTest {
         return System.getProperty("user.dir") + "//reports//" + testCaseName + ".png";
     }
 
-    @BeforeMethod(alwaysRun = true)
-    public WelcomePage launchApplication() throws IOException {
+//    @BeforeMethod(alwaysRun = true)
+    public WelcomePage launchApplication()  {
         driver = initTest();
         welcomePage = new WelcomePage(driver);
         welcomePage.goToPage();
