@@ -7,17 +7,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.devtools.DevTools;
+import org.openqa.selenium.devtools.v117.network.Network;
+import org.openqa.selenium.devtools.v117.network.model.Response;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import selenium.framework.page_objects.WelcomePage;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.HashMap;
+import java.util.Optional;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class BaseTest {
     public WebDriver driver;
@@ -71,6 +78,24 @@ public class BaseTest {
         welcomePage = new WelcomePage(driver);
         welcomePage.goToPage();
         return welcomePage;
+    }
+    public WelcomePage launchApplication(WebDriver driver)  {
+        welcomePage = new WelcomePage(driver);
+        welcomePage.goToPage();
+        return welcomePage;
+    }
+    public WelcomePage initDriver(){
+        driver = initTest();
+        return new WelcomePage(driver);
+    }
+    public String getWhichBrowserExecuted(){
+        Properties properties = new Properties();
+        try (FileInputStream fis = new FileInputStream(System.getProperty("user.dir") + "//src//main//java//selenium//framework//resources//GlobalData.properties")) {
+            properties.load(fis);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return System.getProperty("browser") != null ? System.getProperty("browser") : properties.getProperty("browser");
     }
 
     @AfterMethod(alwaysRun = true)

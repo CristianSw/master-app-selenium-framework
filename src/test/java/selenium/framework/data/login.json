@@ -1,10 +1,22 @@
 [
   {
-    "login": "bob",
-    "password": "100"
+    "username": "bob",
+    "password": "100",
+    "endpoint": "/auth"
   },
   {
-    "login": "john",
-    "password": "100"
+    "username": "john",
+    "password": "somepasswd",
+    "endpoint": "/auth"
+  },
+  {
+    "username": "someUsername",
+    "password": "100",
+    "endpoint": "/auth"
+  },
+  {
+    "username": "someUsername",
+    "password": "somepasswd",
+    "endpoint": "/auth"
   }
 ]

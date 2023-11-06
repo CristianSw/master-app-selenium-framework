@@ -42,7 +42,7 @@ public class AbstractComponents {
 
     @FindBy(xpath = "//ul/li[@class='nav-item'][4]/a")
     WebElement ordersLink;
-    @FindBy(xpath = "//ul/li[@class='nav-item'][5]/a")
+    @FindBy(xpath = "//ul/li[@class='nav-item'][5]")
     WebElement logoutBtn;
 
     public void waitForElementToAppear(By locator) {
@@ -122,6 +122,14 @@ public class AbstractComponents {
     }
     public WebElement getRegisterLink() {
         return registerLink;
+    }
+
+    public WebElement getLogoutBtn(){
+        return logoutBtn;
+    }
+
+    public String getPageURL(){
+        return driver.getCurrentUrl();
     }
 
 }
