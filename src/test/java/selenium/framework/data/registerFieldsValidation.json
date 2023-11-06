@@ -1,0 +1,32 @@
+[
+  {
+    "username": "username",
+    "email": "email@example.com",
+    "password": "password",
+    "confirmPassword": "password"
+  },
+  {
+    "username": "username1",
+    "email": "emai1l@example.com",
+    "password": "password1",
+    "confirmPassword": "password1"
+  },
+  {
+    "username": "Username1",
+    "email": "eMail@example.com",
+    "password": "passW1ord",
+    "confirmPassword": "passW1ord"
+  },
+  {
+    "username": "username123_US",
+    "email": "email@example.com",
+    "password": "passworD_123",
+    "confirmPassword": "passworD_123"
+  },
+  {
+    "username": "username123_DDD#1",
+    "email": "email@example.com",
+    "password": "password#12345",
+    "confirmPassword": "password#12345"
+  }
+]

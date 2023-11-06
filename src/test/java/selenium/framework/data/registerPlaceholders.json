@@ -1,0 +1,8 @@
+[
+  {
+    "usernamePlaceholder": "Enter username",
+    "emailPlaceholder": "Enter email",
+    "passwordPlaceholder": "Password",
+    "confirmPasswordPlaceholder": "Confirm password"
+  }
+]

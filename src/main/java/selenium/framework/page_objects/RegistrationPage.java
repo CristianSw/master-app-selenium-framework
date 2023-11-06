@@ -51,12 +51,40 @@ public class RegistrationPage extends AbstractComponents {
         registerBtn.click();
     }
 
-    public String getUsernameHelp() {
+    public String getUsernameHelpMessage() {
         return usernameHelp.getText();
     }
 
-    public String getEmailHelp() {
+    public String getEmailHelpMessage() {
         return emailHelp.getText();
+    }
+
+    public WebElement getUsernameHelp() {
+        return usernameHelp;
+    }
+
+    public WebElement getEmailHelp() {
+        return emailHelp;
+    }
+
+    public WebElement getUserEmail(){
+        return userEmail;
+    }
+
+    public WebElement getUserUsername() {
+        return userUsername;
+    }
+
+    public WebElement getUserPassword() {
+        return userPassword;
+    }
+
+    public WebElement getUserConfirmPassword() {
+        return userConfirmPassword;
+    }
+
+    public WebElement getRegisterBtn() {
+        return registerBtn;
     }
 
     public void register(String username, String password, String confirmPassword, String email) {

@@ -1,18 +1,18 @@
 [
   {
-    "username": "cristian",
+    "username": "test1",
     "email": "cristian@example.com",
     "password": "testpassword123",
     "confirmPassword": "testpassword123"
   },
   {
-    "username": "Daniela",
+    "username": "Test2",
     "email": "daniela@example.com",
     "password": "TestPasswd123",
     "confirmPassword": "TestPasswd123"
   },
   {
-    "username": "ION",
+    "username": "TEST3_1",
     "email": "ion@example.com",
     "password": "IoN_Password_1234",
     "confirmPassword": "IoN_Password_1234"
