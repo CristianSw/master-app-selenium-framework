@@ -24,7 +24,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class RegistrationPageTest extends BaseTest {
 
 
-    @Test(dataProvider = "getRegistrationDataMessages")
+    @Test(dataProvider = "getRegistrationDataMessages", groups = {"smock", "regression", "login"})
     public void validateRegistrationFormTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         RegistrationPage registrationPage = welcomePage.goToRegistrationPage();
@@ -39,7 +39,7 @@ public class RegistrationPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "getRegistrationDataPlaceholders")
+    @Test(dataProvider = "getRegistrationDataPlaceholders", groups = {"smock", "regression", "login"})
     public void validateRegistrationPlaceholdersTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         RegistrationPage registrationPage = welcomePage.goToRegistrationPage();
@@ -50,7 +50,7 @@ public class RegistrationPageTest extends BaseTest {
         Assert.assertEquals(registrationPage.getUserConfirmPassword().getAttribute("placeholder"), inputData.get("confirmPasswordPlaceholder"));
     }
 
-    @Test(dataProvider = "getRegistrationDataFields")
+    @Test(dataProvider = "getRegistrationDataFields", groups = {"smock", "regression", "login"})
     public void validateFieldsTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         RegistrationPage registrationPage = welcomePage.goToRegistrationPage();
@@ -67,7 +67,7 @@ public class RegistrationPageTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = "getRegistrationUsers")
+    @Test(dataProvider = "getRegistrationUsers", groups = {"smock", "regression", "db"})
     public void registerValidUsersTest(HashMap<String, String> inputData) throws ClassNotFoundException, SQLException, InterruptedException {
 
         String host = "localhost";
@@ -114,7 +114,7 @@ public class RegistrationPageTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"smock", "regression", "login"})
     public void invalidFieldProvidedTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -154,7 +154,7 @@ public class RegistrationPageTest extends BaseTest {
     }
 
 
-    @Test
+    @Test(groups = {"smock", "regression", "login"})
     public void invalidEmailOnlyProvidedTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -196,7 +196,7 @@ public class RegistrationPageTest extends BaseTest {
         }
     }
 
-    @Test
+    @Test(groups = {"smock", "regression", "login"})
     public void userWithUsernameAlreadyRegisteredTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -237,7 +237,7 @@ public class RegistrationPageTest extends BaseTest {
         }
     }
 
-    @Test
+    @Test(groups = {"smock", "regression", "login"})
     public void passwordMissmatchTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
