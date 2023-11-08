@@ -54,6 +54,14 @@ public class AbstractComponents {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait.until(ExpectedConditions.visibilityOf(webElement));
     }
+    public void waitForElementToBeClickable(WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+    public void waitForElementToBeClickable(By locator){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.elementToBeClickable(locator));
+    }
 
     public CartPage goToCartPage() {
         cartLink.click();

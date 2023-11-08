@@ -1,30 +1,20 @@
 package selenium.framework.test_components;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.devtools.DevTools;
-import org.openqa.selenium.devtools.v117.network.Network;
-import org.openqa.selenium.devtools.v117.network.model.Response;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import selenium.framework.page_objects.WelcomePage;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.Optional;
+import java.time.Duration;;
 import java.util.Properties;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicReference;
+
 
 public class BaseTest {
     public WebDriver driver;
@@ -52,7 +42,7 @@ public class BaseTest {
             driver = new ChromeDriver(/*chromeOptions*/);
         }
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         driver.manage().window().maximize();
         return driver;
     }
@@ -97,6 +87,8 @@ public class BaseTest {
         }
         return System.getProperty("browser") != null ? System.getProperty("browser") : properties.getProperty("browser");
     }
+
+
 
     @AfterMethod(alwaysRun = true)
     public void closeDriver() {

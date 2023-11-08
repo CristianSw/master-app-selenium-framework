@@ -1,5 +1,6 @@
 package selenium.framework.page_objects;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,23 +19,40 @@ public class CartPage extends AbstractComponents {
         PageFactory.initElements(driver, this);
     }
 
+    @Getter
     @FindBy(tagName = "h3")
     private WebElement pageName;
+
+    @Getter
     @FindBy(xpath = "//tr/td[2]/button[1]")
     private List<WebElement> productDecrementBtn;
+
+    @Getter
     @FindBy(xpath = "//tr/td[2]/button[2]")
     private List<WebElement> productIncrementBtn;
+
+    @Getter
     @FindBy(id = "clear-cart-btn")
     private WebElement clearCartBtn;
+
+    @Getter
     @FindBy(id = "remove-from-cart")
     private List<WebElement> removeFromCartBtn;
+
+    @Getter
     @FindBy(id = "phone-number")
     private WebElement phoneNumber;
+
+    @Getter
     @FindBy(id = "delivery-address")
     private WebElement deliveryAddress;
+
+    @Getter
     @FindBy(id = "create-order-enabled")
     private WebElement createOrderBtn;
-    @FindBy(xpath = "//tr/td[1][@class='ng-binding']")
+
+    @Getter
+    @FindBy(xpath = "//td[1][@class='ng-binding']")
     private List<WebElement> cartProductsName;
 
     private final By incrementBy = By.xpath("//td[2]/button[2]");

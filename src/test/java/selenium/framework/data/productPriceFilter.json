@@ -1,0 +1,27 @@
+[
+  {
+    "price": "5000"
+  },
+  {
+    "price": "5000",
+    "givenValue": "5asdff0llkk0asd0adA",
+    "expectedValue": "5000"
+  },
+  {
+    "idColumnName": "ID",
+    "nameColumnName": "Name",
+    "priceColumnName": "Price"
+  },
+  {
+    "title": "zen",
+    "minPrice": "5000"
+  },
+  {
+    "title": "zen",
+    "maxPrice": "24000"
+  },
+  {
+    "minPrice": "200",
+    "maxPrice": "500"
+  }
+]
