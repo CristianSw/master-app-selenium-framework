@@ -63,6 +63,24 @@ public class AbstractComponents {
         wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    public void waitForElementToDisappear(By locator){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
+    }
+    public void waitForElementToDisappear(WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+    public void waitForTextToBePresent(By locator, String value){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.textToBePresentInElementValue(locator,value));
+    }
+    public void waitForTextToBePresent(WebElement element, String value){
+        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        wait.until(ExpectedConditions.textToBePresentInElementValue(element,value));
+    }
+
     public CartPage goToCartPage() {
         cartLink.click();
         return new CartPage(driver);

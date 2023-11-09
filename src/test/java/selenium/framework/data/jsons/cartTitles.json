@@ -1,0 +1,22 @@
+[
+  {
+    "nameColumnName": "Name",
+    "countColumnName": "Count",
+    "priceColumnName": "Price",
+    "clearCartBtn": "Clear Cart"
+  },
+  {
+    "zen3": "zen3",
+    "zen5": "zen5",
+    "zen7": "zen7",
+    "count": "1",
+    "countSecond": "2",
+    "countIncreased": "2",
+    "countDecreased": "1",
+    "phoneNumber": "+373123456789",
+    "deliveryAddress": "some address 123",
+    "alertMessage": "To create order you need to login or register !",
+    "login": "bob",
+    "password": "100"
+  }
+]

@@ -19,7 +19,6 @@ public class CartPage extends AbstractComponents {
         PageFactory.initElements(driver, this);
     }
 
-    @Getter
     @FindBy(tagName = "h3")
     private WebElement pageName;
 
@@ -49,11 +48,22 @@ public class CartPage extends AbstractComponents {
 
     @Getter
     @FindBy(id = "create-order-enabled")
-    private WebElement createOrderBtn;
+    private WebElement createOrderAuthBtn;
+
+    @Getter
+    @FindBy(id = "create-order-disabled")
+    private WebElement createOrderUnAuthBtn;
 
     @Getter
     @FindBy(xpath = "//td[1][@class='ng-binding']")
     private List<WebElement> cartProductsName;
+
+    @FindBy(xpath = "//tr/td[4][@class='ng-binding']")
+    private WebElement cartTotalPrice;
+
+    @Getter
+    @FindBy(xpath = "//h3[2]")
+    private WebElement orderDetails;
 
     private final By incrementBy = By.xpath("//td[2]/button[2]");
     private final By decrementBy = By.xpath("//td[2]/button[1]");
@@ -64,8 +74,9 @@ public class CartPage extends AbstractComponents {
     }
 
     public WebElement findProductByName(String productName) {
-        return cartProductsName.stream()
-                .filter(p -> p.getText().equals(productName))
+        List<WebElement> elements = driver.findElements(By.xpath("//td[1][@class='ng-binding']"));
+        return elements.stream()
+                .filter(p -> p.getText().contains(productName))
                 .findFirst()
                 .orElse(null);
     }
@@ -98,13 +109,23 @@ public class CartPage extends AbstractComponents {
     }
 
     public void createOrderClick() {
-        createOrderBtn.click();
+        boolean auth = createOrderAuthBtn.isDisplayed();
+        boolean unAuth = createOrderUnAuthBtn.isDisplayed();
+        if (auth){
+            createOrderAuthBtn.click();
+        }else if (unAuth){
+            createOrderUnAuthBtn.click();
+        }
     }
 
     public void createOrder(String phone, String address) {
         setPhoneNumber(phone);
         setDeliveryAddress(address);
         createOrderClick();
+    }
+
+    public String getCartTotalPrice(){
+        return cartTotalPrice.getText();
     }
 
 
