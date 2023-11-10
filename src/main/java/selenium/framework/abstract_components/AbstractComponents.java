@@ -1,5 +1,6 @@
 package selenium.framework.abstract_components;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -40,6 +41,7 @@ public class AbstractComponents {
     @FindBy(xpath = "//ul/li[@class='nav-item'][3]/a")
     WebElement cartLink;
 
+    @Getter
     @FindBy(xpath = "//ul/li[@class='nav-item'][4]/a")
     WebElement ordersLink;
     @FindBy(xpath = "//ul/li[@class='nav-item'][5]")

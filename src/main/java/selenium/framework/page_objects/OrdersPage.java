@@ -1,5 +1,6 @@
 package selenium.framework.page_objects;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,11 +22,16 @@ public class OrdersPage extends AbstractComponents {
 
     @FindBy(tagName = "h3")
     private WebElement pageName;
+    @Getter
     @FindBy(id = "button-pay")
-    private WebElement buttonPay;
+    private List<WebElement> buttonPay;
 
     @FindBy(xpath = "//tr/td[1][@class='ng-binding']")
     private List<WebElement> ordersById;
+
+    @Getter
+    @FindBy(xpath = "//thead/tr/td")
+    private List<WebElement> orderTableHeader;
 
     private final By deliveryAddressBy = By.xpath("//td[2][@class='ng-binding']");
     private final By phoneBy = By.xpath("//td[3][@class='ng-binding']");
@@ -35,8 +41,9 @@ public class OrdersPage extends AbstractComponents {
         return pageName.getText();
     }
 
-    public void clickPayBtn() {
-        buttonPay.click();
+    public OrdersPayPage clickPayBtn(int id) {
+        buttonPay.get(id).click();
+        return new OrdersPayPage(driver);
     }
 
     public List<String> getOrderDetailsByOrderId(String orderId) {
