@@ -48,7 +48,7 @@ public class AbstractComponents {
     WebElement logoutBtn;
 
     public void waitForElementToAppear(By locator) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 

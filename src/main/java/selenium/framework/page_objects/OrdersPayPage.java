@@ -1,5 +1,6 @@
 package selenium.framework.page_objects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,12 +26,20 @@ public class OrdersPayPage extends AbstractComponents {
     private WebElement orderAddress;
     @FindBy(id = "order-phone")
     private WebElement orderPhone;
-    @FindBy(tagName = "h3")
+    @FindBy(xpath = "//h3[2]")
     private WebElement payText;
-    @FindBy(css = ".paypal-logo")
+
+    @Getter
+    @FindBy(css = "div[class*='paypal-button-number-0']")
     private WebElement payPalBtn;
+
+    @Getter
     @FindBy(css = ".paypal-button-text")
     private WebElement debitOrCreditCardBtn;
+
+    @Getter
+    @FindBy(id = "buttons-container")
+    private WebElement buttonContainer;
 
     public String getPageName(){
         return pageName.getText();

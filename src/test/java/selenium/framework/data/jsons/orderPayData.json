@@ -1,0 +1,10 @@
+[
+  {
+    "username": "bob",
+    "password": "100",
+    "orderId": "1",
+    "endpoint": "/order_pay/",
+    "pageName": "Your Order",
+    "paySectionDelimiter": "Pay"
+  }
+]
