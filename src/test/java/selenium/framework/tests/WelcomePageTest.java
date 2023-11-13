@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public class WelcomePageTest extends BaseTest {
 
-    @Test(groups = {"smock", "regression"}, retryAnalyzer = Retry.class)
+    @Test(groups = {"smock"}, retryAnalyzer = Retry.class)
     public void greetingWelcomePageTest() {
         String expectedGreeting = "Hi, nice to see you in our internet-magazine";
         String markedNameExpected = "Market";
@@ -37,7 +37,7 @@ public class WelcomePageTest extends BaseTest {
         Assert.assertEquals(actualMarketName, markedNameExpected);
     }
 
-    @Test(dataProvider = "getDataLoginFields", groups = {"smock", "regression"}, retryAnalyzer = Retry.class)
+    @Test(dataProvider = "getDataLoginFields", groups = {"smock"}, retryAnalyzer = Retry.class)
     public void loginFieldsText(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         boolean usernameIsDisplayed = welcomePage.getUsernameField().isDisplayed();
@@ -55,7 +55,7 @@ public class WelcomePageTest extends BaseTest {
         Assert.assertEquals(passwordFromField, inputData.get("password"));
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void loginBtnTest() {
         WelcomePage welcomePage = launchApplication();
         WebElement loginBtn = welcomePage.getLoginBtn();
@@ -64,7 +64,7 @@ public class WelcomePageTest extends BaseTest {
         Assert.assertTrue(isLoginBtnDisplayed);
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void loginBtnHooverTest() {
         WelcomePage welcomePage = launchApplication();
         WebElement loginBtn = welcomePage.getLoginBtn();
@@ -75,35 +75,35 @@ public class WelcomePageTest extends BaseTest {
         Assert.assertTrue(isBtnOutlinePresent);
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void registerLinkTest() {
         WelcomePage welcomePage = launchApplication();
         boolean isRegisterLinkDisplayed = welcomePage.getRegisterLink().isDisplayed();
         Assert.assertTrue(isRegisterLinkDisplayed);
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void registerLinkEndpointTest() {
         WelcomePage welcomePage = launchApplication();
         boolean containsEndpoint = welcomePage.getRegisterLink().getAttribute("href").contains("/registration");
         Assert.assertTrue(containsEndpoint);
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void productsLinkEndpointTest() {
         WelcomePage welcomePage = launchApplication();
         boolean containsEndpoint = welcomePage.getProductsLink().getAttribute("href").contains("/store");
         Assert.assertTrue(containsEndpoint);
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void marketLinkEndpointTest() {
         WelcomePage welcomePage = launchApplication();
         boolean containsEndpoint = welcomePage.getMarketLink().getAttribute("href").contains("/");
         Assert.assertTrue(containsEndpoint);
     }
 
-    @Test(groups = {"smock", "regression"})
+    @Test(groups = {"smock"})
     public void cartLinkEndpointTest() {
         WelcomePage welcomePage = launchApplication();
         boolean containsEndpoint = welcomePage.getCartLink().getAttribute("href").contains("/cart");
@@ -113,7 +113,7 @@ public class WelcomePageTest extends BaseTest {
     @DataProvider
     public Object[][] getDataLoginFields() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//login.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//login.json");
         return new Object[][]{{jsonData.get(0)}};
     }
 

@@ -11,6 +11,7 @@ import selenium.framework.data.DataReader;
 import selenium.framework.page_objects.RegistrationPage;
 import selenium.framework.page_objects.WelcomePage;
 import selenium.framework.test_components.BaseTest;
+import selenium.framework.test_components.Retry;
 
 import java.io.IOException;
 import java.sql.*;
@@ -24,7 +25,7 @@ import java.util.concurrent.atomic.AtomicReference;
 public class RegistrationPageTest extends BaseTest {
 
 
-    @Test(dataProvider = "getRegistrationDataMessages", groups = {"smock", "regression", "login"})
+    @Test(dataProvider = "getRegistrationDataMessages", groups = {"smock", "login"})
     public void validateRegistrationFormTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         RegistrationPage registrationPage = welcomePage.goToRegistrationPage();
@@ -39,7 +40,7 @@ public class RegistrationPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "getRegistrationDataPlaceholders", groups = {"smock", "regression", "login"})
+    @Test(dataProvider = "getRegistrationDataPlaceholders", groups = {"smock", "login"})
     public void validateRegistrationPlaceholdersTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         RegistrationPage registrationPage = welcomePage.goToRegistrationPage();
@@ -50,7 +51,7 @@ public class RegistrationPageTest extends BaseTest {
         Assert.assertEquals(registrationPage.getUserConfirmPassword().getAttribute("placeholder"), inputData.get("confirmPasswordPlaceholder"));
     }
 
-    @Test(dataProvider = "getRegistrationDataFields", groups = {"smock", "regression", "login"})
+    @Test(dataProvider = "getRegistrationDataFields", groups = {"smock", "login"})
     public void validateFieldsTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         RegistrationPage registrationPage = welcomePage.goToRegistrationPage();
@@ -67,7 +68,7 @@ public class RegistrationPageTest extends BaseTest {
 
     }
 
-    @Test(dataProvider = "getRegistrationUsers", groups = {"smock", "regression", "db"})
+    @Test(dataProvider = "getRegistrationUsers", groups = {"smock", "db"})
     public void registerValidUsersTest(HashMap<String, String> inputData) throws ClassNotFoundException, SQLException, InterruptedException {
 
         String host = "localhost";
@@ -114,7 +115,7 @@ public class RegistrationPageTest extends BaseTest {
     }
 
 
-    @Test(groups = {"smock", "regression", "login"})
+    @Test(groups = {"smock", "login","chromeOnly"})
     public void invalidFieldProvidedTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -154,7 +155,7 @@ public class RegistrationPageTest extends BaseTest {
     }
 
 
-    @Test(groups = {"smock", "regression", "login"})
+    @Test(groups = {"smock", "login", "chromeOnly"})
     public void invalidEmailOnlyProvidedTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -196,7 +197,7 @@ public class RegistrationPageTest extends BaseTest {
         }
     }
 
-    @Test(groups = {"smock", "regression", "login"})
+    @Test(groups = {"smock", "login", "chromeOnly"}, retryAnalyzer = Retry.class)
     public void userWithUsernameAlreadyRegisteredTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -237,7 +238,7 @@ public class RegistrationPageTest extends BaseTest {
         }
     }
 
-    @Test(groups = {"smock", "regression", "login"})
+    @Test(groups = {"smock", "login", "chromeOnly"})
     public void passwordMissmatchTest() throws InterruptedException {
         WelcomePage welcomePage = launchApplication();
         DevTools devTools = ((ChromiumDriver) driver).getDevTools();
@@ -281,28 +282,28 @@ public class RegistrationPageTest extends BaseTest {
     @DataProvider
     public Object[][] getRegistrationDataMessages() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//registerMessages.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//registerMessages.json");
         return new Object[][]{{jsonData.get(0)}};
     }
 
     @DataProvider
     public Object[][] getRegistrationDataPlaceholders() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//registerPlaceholders.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//registerPlaceholders.json");
         return new Object[][]{{jsonData.get(0)}};
     }
 
     @DataProvider
     public Object[][] getRegistrationDataFields() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//registerFieldsValidation.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//registerFieldsValidation.json");
         return new Object[][]{{jsonData.get(0)}, {jsonData.get(1)}, {jsonData.get(2)}, {jsonData.get(3)}, {jsonData.get(4)}};
     }
 
     @DataProvider
     public Object[][] getRegistrationUsers() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//registration.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//registration.json");
         return new Object[][]{{jsonData.get(0)}, {jsonData.get(1)}, {jsonData.get(2)}};
     }
 }

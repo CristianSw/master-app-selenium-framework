@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Framework Suite" parallel="classes">
+    <groups>
+        <run>
+            <exclude name="db"/>
+            <exclude name="chromeOnly"/>
+        </run>
+    </groups>
+    <listeners>
+        <listener class-name="selenium.framework.test_components.Listeners"/>
+    </listeners>
+
+    <test name="Firefox Regression Tests" thread-count="2">
+     <classes>
+         <class name="selenium.framework.tests.WelcomePageTest"/>
+         <class name="selenium.framework.tests.CartTest"/>
+         <class name="selenium.framework.tests.LoginTest"/>
+         <class name="selenium.framework.tests.OrdersPayTest"/>
+         <class name="selenium.framework.tests.OrdersTest"/>
+         <class name="selenium.framework.tests.ProductsListPageTest"/>
+         <class name="selenium.framework.tests.RegistrationPageTest"/>
+     </classes>
+    </test>
+</suite>

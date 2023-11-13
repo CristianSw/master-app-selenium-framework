@@ -33,8 +33,8 @@ public class BaseTest {
 
         if (browserWanted.equalsIgnoreCase("firefox")) {
             // Add the headless option for Firefox
-//            firefoxOptions.addArguments("--headless");
-            driver = new FirefoxDriver(/*firefoxOptions*/);
+            firefoxOptions.addArguments("--headless");
+            driver = new FirefoxDriver(firefoxOptions);
         } else if (browserWanted.equalsIgnoreCase("chrome")) {
 //            System.setProperty("webdriver.chrome.driver","//usr//bin//chromedriver");
             // Add the headless option for Chrome

@@ -419,21 +419,21 @@ public class ProductsListPageTest extends BaseTest {
     @DataProvider
     public Object[][] getMixedFiltersTitleMinData() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//productPriceFilter.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//productPriceFilter.json");
         return new Object[][]{{jsonData.get(3)}};
     }
 
     @DataProvider
     public Object[][] getMixedFiltersTitleMaxData() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//productPriceFilter.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//productPriceFilter.json");
         return new Object[][]{{jsonData.get(4)}};
     }
 
     @DataProvider
     public Object[][] getMixedFiltersMinMaxData() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//productPriceFilter.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//productPriceFilter.json");
         return new Object[][]{{jsonData.get(5)}};
     }
 
@@ -441,21 +441,21 @@ public class ProductsListPageTest extends BaseTest {
     @DataProvider
     public Object[][] getProductPriceFilter() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//productPriceFilter.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//productPriceFilter.json");
         return new Object[][]{{jsonData.get(0)}};
     }
 
     @DataProvider
     public Object[][] getProductPriceWithTextFilter() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//productPriceFilter.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//productPriceFilter.json");
         return new Object[][]{{jsonData.get(1)}};
     }
 
     @DataProvider
     public Object[][] getProductsTableHeader() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//productPriceFilter.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//productPriceFilter.json");
         return new Object[][]{{jsonData.get(2)}};
     }
 

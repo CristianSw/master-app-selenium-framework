@@ -47,6 +47,9 @@ public class OrdersPayPage extends AbstractComponents {
     public String getOrderId(){
         return orderId.getText();
     }
+    public WebElement getOrderIdElement(){
+        return orderId;
+    }
     public String getOrderPrice(){
         return orderPrice.getText();
     }

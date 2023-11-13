@@ -96,7 +96,7 @@ public class LoginTest extends BaseTest {
     @DataProvider
     public Object[][] getDataLogin() throws IOException {
         DataReader dataReader = new DataReader();
-        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//login.json");
+        List<HashMap<String, String>> jsonData = dataReader.getJSONData(System.getProperty("user.dir") + "//src//test//java//selenium//framework//data//jsons//login.json");
         return new Object[][]{{jsonData.get(0)}, {jsonData.get(1)}, {jsonData.get(2)}, {jsonData.get(3)}};
     }
 

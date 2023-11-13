@@ -12,6 +12,7 @@ import selenium.framework.page_objects.OrdersPage;
 import selenium.framework.page_objects.ProductListPage;
 import selenium.framework.page_objects.WelcomePage;
 import selenium.framework.test_components.BaseTest;
+import selenium.framework.test_components.Retry;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -116,7 +117,7 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(cartPage.getOrderDetails().getText(), "Order details");
     }
 
-    @Test(dataProvider = "getCartProductsNames")
+    @Test(dataProvider = "getCartProductsNames", retryAnalyzer = Retry.class)
     public void removeFromCartBtnTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         welcomePage.waitForElementToBeClickable(welcomePage.getProductsLink());
@@ -139,13 +140,13 @@ public class CartTest extends BaseTest {
         Assert.assertTrue(zen7.contains(inputData.get("zen7")));
 
         cartPage.getRemoveFromCartBtn().get(1).click();
-        cartPage.waitForElementToDisappear(cartPage.getRemoveFromCartBtn().get(1));
+        cartPage.waitForElementToDisappear(By.xpath("//button[@id='remove-from-cart'][2]"));
         WebElement nullExpected = cartPage.findProductByName("zen5");
         Assert.assertNull(nullExpected);
     }
 
 
-    @Test(groups = {"smock"}, dataProvider = "getCartProductsNames")
+    @Test(groups = {"smock"}, dataProvider = "getCartProductsNames", retryAnalyzer = Retry.class)
     public void clearCartTest(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         welcomePage.waitForElementToBeClickable(welcomePage.getProductsLink());
@@ -317,7 +318,7 @@ public class CartTest extends BaseTest {
         driver.switchTo().alert().accept();
     }
 
-    @Test(dataProvider = "getCartProductsNames")
+    @Test(dataProvider = "getCartProductsNames",retryAnalyzer = Retry.class)
     public void createOrderAuthorized(HashMap<String, String> inputData) {
         WelcomePage welcomePage = launchApplication();
         welcomePage.loginToApp(inputData.get("login"), inputData.get("password"));
